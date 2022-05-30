@@ -1,0 +1,23 @@
+{
+  "name": "teamprofilegenerator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrsamylighfoot/TeamProfileGenerator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrsamylighfoot/TeamProfileGenerator/issues"
+  },
+  "homepage": "https://github.com/mrsamylighfoot/TeamProfileGenerator#readme",
+  "dependencies": {
+    "jest": "^28.1.0"
+  }
+}
