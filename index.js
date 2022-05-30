@@ -8,33 +8,105 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
-const distFolder = path.resolve("__dirname", "dist");
+const distFolder = path.resolve(__dirname, "dist");
 const distPath = path.join(distFolder, "employee.html");
 
+const teamMembers = [];
+const idArray = [];
+
 const startApp = () => {
-  inquirer
-    .prompt([
-      {
-        type: "input",
-        name: "name",
-        message: "What's your name?",
-      },
-      {
-        type: "input",
-        name: "email",
-        message: "What's your email?",
-      },
-      {
-        type: "input",
-        name: "id",
-        message: "What's your ID?",
-      },
-    ])
-    .then((res) => {
-      console.log(res);
-      const newEmployee = new Employee(res.name, res.id, res.email);
-      fs.writeFileSync("./dist/employee.html", makePage(newEmployee), "utf-8");
+  function createManager() {
+    console.log(
+      "Welcome to the Team Profile Generator! Please build your team"
+    );
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "managerName",
+          message: "What is the name of the team manager?",
+        },
+        {
+          type: "input",
+          name: "managerId",
+          message: "What the is ID of the team manager?",
+        },
+        {
+          type: "input",
+          name: "managerEmail",
+          message: "What is the email address for the team manager?",
+        },
+        {
+          type: "input",
+          name: "managerOfficeNumber",
+          message: "What is the office number for the team manager?",
+        },
+      ])
+      .then((res) => {
+        const manager = new Manager(
+          res.managerName,
+          res.managerId,
+          res.managerEmail,
+          res.managerOfficeNumber
+        );
+        teamMembers.push(manager);
+        idArray.push(res.managerId);
+        createTeam();
+      });
+  }
+
+  function createTeam() {
+    inquirer
+    .prompt({
+        type: 'list',
+        name: 'memberType',
+        message: 'Which type of team member would you like to add?',
+        choices: [
+          'Engineer',
+          'Intern',
+          "None. I have added all team members.",
+        ],
+    })
+    .then((userChoice) =>{
+      switch (userChoice.memberType) {
+        case 'Engineer':
+          addEngineer();
+          break;
+        case 'Intern':
+          addIntern();
+          break;
+        default:
+          buildTeam();
+      }
     });
+  }
+
+  function addEngineer()
+
+  function addIntern()
+  // inquirer
+  //   .prompt([
+  //     {
+  //       type: "input",
+  //       name: "name",
+  //       message: "What's your name?",
+  //     },
+  //     {
+  //       type: "input",
+  //       name: "email",
+  //       message: "What's your email?",
+  //     },
+  //     {
+  //       type: "input",
+  //       name: "id",
+  //       message: "What's your ID?",
+  //     },
+  //   ])
+  //   .then((res) => {
+  //     console.log(res);
+  //     const newEmployee = new Employee(res.name, res.id, res.email);
+  //     fs.writeFileSync("./dist/employee.html", makePage(newEmployee), "utf-8");
+  //   });
 };
 
 startApp();
