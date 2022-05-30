@@ -162,7 +162,7 @@ const startApp = () => {
     if (!fs.existsSync(distFolder)) {
       fs.mkdirSync(distFolder);
     }
-    fs.writeFileSync(distPath, render(teamMembers), "utf-8");
+    fs.writeFileSync(distPath, makePage(teamMembers), "utf-8");
   }
 
   createManager();

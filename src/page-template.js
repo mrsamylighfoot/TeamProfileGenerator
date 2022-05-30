@@ -77,16 +77,6 @@ const generateTeam = (team) => {
   return html.join("");
 };
 
-// const makeHTML = (team) => {
-//   return `
-//     <div>
-//        <h1> ${team.name}</h1>
-//         <h2>${team.id}</h2>
-//         <h3>${team.email}</h3>
-//     </div>
-//     `;
-// };
-
 module.exports = (team) => {
   return `<!DOCTYPE html>
     <html lang="en">
@@ -97,7 +87,7 @@ module.exports = (team) => {
         <title>Document</title>
     </head>
     <body>
-        ${makeHTML(team)}
+        ${generateTeam(team)}
     </body>
     </html>`;
 };
