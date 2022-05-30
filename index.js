@@ -4,6 +4,9 @@ const path = require("path");
 
 const Employee = require("./lib/Employee");
 const makePage = require("./src/page-template");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
 const distFolder = path.resolve("__dirname", "dist");
 const distPath = path.join(distFolder, "employee.html");
@@ -30,7 +33,7 @@ const startApp = () => {
     .then((res) => {
       console.log(res);
       const newEmployee = new Employee(res.name, res.id, res.email);
-      fs.writeFileSync("./dist.employee.html", makePage(newEmployee), "utf-8");
+      fs.writeFileSync("./dist/employee.html", makePage(newEmployee), "utf-8");
     });
 };
 
